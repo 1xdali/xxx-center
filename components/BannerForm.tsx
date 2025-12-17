@@ -123,6 +123,7 @@ export default function BannerForm({ onSubmit, onCancel }: BannerFormProps) {
                 <div className="flex-1 grid md:grid-cols-2 gap-3">
                     <Card className="p-3">
                         <ImageUploadWithLink
+                            id="default-chinese"
                             label="中文版"
                             value={defaultChineseImage}
                             onChange={setDefaultChineseImage}
@@ -130,6 +131,7 @@ export default function BannerForm({ onSubmit, onCancel }: BannerFormProps) {
                     </Card>
                     <Card className="p-3">
                         <ImageUploadWithLink
+                            id="default-english"
                             label="英文版"
                             value={defaultEnglishImage}
                             onChange={setDefaultEnglishImage}
@@ -184,6 +186,7 @@ export default function BannerForm({ onSubmit, onCancel }: BannerFormProps) {
                             <div className="flex-1 grid md:grid-cols-2 gap-3">
                                 <Card className="p-3">
                                     <ImageUploadWithLink
+                                        id={`${platform}-chinese`}
                                         label="中文版"
                                         value={platformImages[platform]?.chinese || createEmptyImageConfig()}
                                         onChange={(config) => updatePlatformImage(platform, 'chinese', config)}
@@ -191,6 +194,7 @@ export default function BannerForm({ onSubmit, onCancel }: BannerFormProps) {
                                 </Card>
                                 <Card className="p-3">
                                     <ImageUploadWithLink
+                                        id={`${platform}-english`}
                                         label="英文版"
                                         value={platformImages[platform]?.english || createEmptyImageConfig()}
                                         onChange={(config) => updatePlatformImage(platform, 'english', config)}

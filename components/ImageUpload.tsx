@@ -10,12 +10,14 @@ import { Upload, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ImageUploadWithLinkProps {
+    id: string; // 唯一标识，用于区分不同的配置模块
     label: string;
     value: ImageConfig;
     onChange: (config: ImageConfig) => void;
 }
 
 export default function ImageUploadWithLink({
+    id,
     label,
     value,
     onChange,
@@ -130,7 +132,7 @@ export default function ImageUploadWithLink({
                     <label className="flex items-center gap-2 cursor-pointer">
                         <input
                             type="radio"
-                            name={`link-type-${label}`}
+                            name={`link-type-${id}`}
                             checked={value.linkType === LinkType.INTERNAL}
                             onChange={() => onChange({ ...value, linkType: LinkType.INTERNAL })}
                             className="w-4 h-4 text-primary"
@@ -142,7 +144,7 @@ export default function ImageUploadWithLink({
                     <label className="flex items-center gap-2 cursor-pointer">
                         <input
                             type="radio"
-                            name={`link-type-${label}`}
+                            name={`link-type-${id}`}
                             checked={value.linkType === LinkType.EXTERNAL}
                             onChange={() => onChange({ ...value, linkType: LinkType.EXTERNAL })}
                             className="w-4 h-4 text-primary"
