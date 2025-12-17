@@ -29,6 +29,8 @@ export interface PlatformStatus {
 export interface Banner {
   id: string;
   platforms: BannerPlatform[];
+  // 通用配置（用于 BannerList 显示）
+  defaultImages: PlatformImages;
   // 每个平台可能有不同的图片配置
   platformImages: {
     [BannerPlatform.OLD_MOBILE]?: PlatformImages;

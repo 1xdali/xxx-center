@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Banner, BannerFormData } from '@/types/banner';
+import { Banner, BannerFormData, LinkType } from '@/types/banner';
 import BannerForm from '@/components/BannerForm';
 import BannerList from '@/components/BannerList';
 import { Button } from '@/components/ui/button';
@@ -16,6 +16,10 @@ export default function Home() {
     const newBanner: Banner = {
       id: Date.now().toString(),
       platforms: formData.platforms,
+      defaultImages: {
+        chinese: { file: null, preview: '', linkType: LinkType.INTERNAL, linkUrl: '' },
+        english: { file: null, preview: '', linkType: LinkType.INTERNAL, linkUrl: '' },
+      },
       platformImages: {},
       platformStatuses: {},
       isPinned: false, // 默认不固定
@@ -25,6 +29,26 @@ export default function Home() {
       endDate: formData.endDate || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
       createdAt: new Date(),
     };
+
+    // 获取通用配置（使用第一个平台的图片作为通用配置）
+    const firstPlatform = formData.platforms[0];
+    const defaultImages = formData.platformImages[firstPlatform];
+    if (defaultImages) {
+      newBanner.defaultImages = {
+        chinese: {
+          file: defaultImages.chinese.file,
+          preview: defaultImages.chinese.preview,
+          linkType: defaultImages.chinese.linkType,
+          linkUrl: defaultImages.chinese.linkUrl,
+        },
+        english: {
+          file: defaultImages.english.file,
+          preview: defaultImages.english.preview,
+          linkType: defaultImages.english.linkType,
+          linkUrl: defaultImages.english.linkUrl,
+        },
+      };
+    }
 
     // 处理每个平台的图片和状态
     formData.platforms.forEach((platform) => {

@@ -66,8 +66,8 @@ export default function BannerList({ banners, onEdit, onDelete, onUpdateBanner }
                 <tbody>
                     {banners.map((banner, index) => {
                         const active = isActive(banner);
-                        const firstPlatform = banner.platforms[0];
-                        const images = banner.platformImages[firstPlatform];
+                        // 使用通用配置的图片
+                        const images = banner.defaultImages;
 
                         return (
                             <tr key={banner.id} className="border-b hover:bg-muted/30 transition-colors">
