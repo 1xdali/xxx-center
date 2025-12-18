@@ -3,6 +3,7 @@ export enum BannerPlatform {
   PC = 'pc',
   NEW_ANDROID = 'new_android',
   NEW_IOS = 'new_ios',
+  NEW_H5 = 'new_h5',
 }
 
 export enum LinkType {
@@ -37,6 +38,7 @@ export interface Banner {
     [BannerPlatform.PC]?: PlatformImages;
     [BannerPlatform.NEW_ANDROID]?: PlatformImages;
     [BannerPlatform.NEW_IOS]?: PlatformImages;
+    [BannerPlatform.NEW_H5]?: PlatformImages;
   };
   // 每个平台的展示状态
   platformStatuses: {
@@ -44,6 +46,7 @@ export interface Banner {
     [BannerPlatform.PC]?: PlatformStatus;
     [BannerPlatform.NEW_ANDROID]?: PlatformStatus;
     [BannerPlatform.NEW_IOS]?: PlatformStatus;
+    [BannerPlatform.NEW_H5]?: PlatformStatus;
   };
   isPinned: boolean; // 整个横幅是否固定
   isAd: boolean;
@@ -66,9 +69,10 @@ export interface BannerFormData {
 
 export const PLATFORM_LABELS: Record<BannerPlatform, string> = {
   [BannerPlatform.OLD_MOBILE]: '老版移动端(Android & iOS & H5)',
-  [BannerPlatform.PC]: 'PC端',
+  [BannerPlatform.PC]: '新 PC',
   [BannerPlatform.NEW_ANDROID]: '新 Android',
   [BannerPlatform.NEW_IOS]: '新 iOS',
+  [BannerPlatform.NEW_H5]: '新 H5',
 };
 
 export const PLATFORM_SUBABELS: Record<BannerPlatform, string> = {
@@ -76,4 +80,5 @@ export const PLATFORM_SUBABELS: Record<BannerPlatform, string> = {
   [BannerPlatform.PC]: '桌面网页',
   [BannerPlatform.NEW_ANDROID]: 'Android 新版',
   [BannerPlatform.NEW_IOS]: 'iOS 新版',
+  [BannerPlatform.NEW_H5]: 'H5 新版',
 };
